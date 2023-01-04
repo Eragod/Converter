@@ -1,13 +1,15 @@
+# imports
 import customtkinter
 from PIL import Image
 
+# Themes
+customtkinter.set_appearance_mode("System")  # Modes: system, light, dark
+customtkinter.set_default_color_theme("green")  # Themes: blue), dark-blue, green
 
-customtkinter.set_appearance_mode("System")  # Modes: system (default), light, dark
-customtkinter.set_default_color_theme("green")  # Themes: blue (default), dark-blue, green
 
-
-def change_app_mode_event(new_appearance_mode: str):
-    customtkinter.set_appearance_mode(new_appearance_mode)
+# Functions
+def change_app_mode_event(new_app_mode: str):
+    customtkinter.set_appearance_mode(new_app_mode)
 
 
 def change_language_event(language: str):
@@ -28,31 +30,33 @@ def convert_to_ico():
     img.save("Converter.ico")
 
 
+# App create
 app = customtkinter.CTk()
 app.title("Converter")
 app.geometry("500x350")
 app.resizable(False, False)
 
-
+# Tabview
 Tabview = customtkinter.CTkTabview(app, width=480, height=340)
 Tabview.add("Converter")
 Tabview.add("Settings")
 Tabview.pack()
 
-
+# Path entry
 path = customtkinter.CTkEntry(Tabview.tab("Converter"), width=475)
 path.pack(pady=10)
 
-
+# Convert Buttons
 btn_png = customtkinter.CTkButton(Tabview.tab("Converter"), text="Convert to .png", command=convert_to_png)
 btn_png.pack(pady=10)
 btn_ico = customtkinter.CTkButton(Tabview.tab("Converter"), text="Convert to .ico", command=convert_to_ico)
 btn_ico.pack(pady=10)
 
-
+# Settings
 change_app_mode = customtkinter.CTkOptionMenu(Tabview.tab("Settings"), values=["System", "Dark", "Light"],
                                               command=change_app_mode_event).pack(pady=10)
 change_language = customtkinter.CTkOptionMenu(Tabview.tab("Settings"), values=["English", "Russian"],
-                                              command=change_language_event).pack()
+                                              command=change_language_event).pack(pady=10)
 
+# Start!
 app.mainloop()
