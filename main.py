@@ -4,7 +4,7 @@ from PIL import Image
 
 # Themes
 customtkinter.set_appearance_mode("System")  # Modes: system, light, dark
-customtkinter.set_default_color_theme("green")  # Themes: blue), dark-blue, green
+customtkinter.set_default_color_theme("green")  # Themes: blue, dark-blue, green
 
 
 # Functions
@@ -37,9 +37,10 @@ app.geometry("500x350")
 app.resizable(False, False)
 
 # Tabview
-Tabview = customtkinter.CTkTabview(app, width=480, height=340)
+Tabview = customtkinter.CTkTabview(app, width=480, height=345)
 Tabview.add("Converter")
 Tabview.add("Settings")
+Tabview.add("About the creator")
 Tabview.pack()
 
 # Path entry
@@ -57,6 +58,12 @@ change_app_mode = customtkinter.CTkOptionMenu(Tabview.tab("Settings"), values=["
                                               command=change_app_mode_event).pack(pady=10)
 change_language = customtkinter.CTkOptionMenu(Tabview.tab("Settings"), values=["English", "Russian"],
                                               command=change_language_event).pack(pady=10)
+
+# About
+about_text = customtkinter.CTkTextbox(Tabview.tab("About the creator"), width=475, height=295)
+about_text.pack()
+about_text.insert("0.0", "This application is created by Eragod1337 or Eragod \n"
+                         "Github - https://github.com/Eragod/Converter")
 
 # Start!
 app.mainloop()
