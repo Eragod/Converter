@@ -1,0 +1,6 @@
+06.01.2023 - 0.1.0:
+    - add new format
+    - add icon
+    - new text in "About the creator"
+    - add text in "Settings"
+    - add button for open github (Idk why this is necessary)
